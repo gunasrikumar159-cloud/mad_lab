@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gunasri A | Computer Science Engineering Student & Full Stack Developer</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Portfolio of Gunasri A, a Computer Science Engineering student at IFET College of Engineering and aspiring Software & Full Stack Developer skilled in Python, Java, JavaScript, React.js, Node.js, and MySQL." />
+  <meta name="keywords"
+    content="Gunasri A, Portfolio, Computer Science Engineering, Software Developer, Full Stack Developer, Python, Java, JavaScript, MySQL, Three.js, IFET" />
+  <meta name="author" content="Gunasri A" />
+
+  <!-- Open Graph / Social Media Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gunasri A | Computer Science Engineering Student & Full Stack Developer" />
+  <meta property="og:description"
+    content="Portfolio of Gunasri A, aspiring Software & Full Stack Developer. View projects, experience, technical skills, and credentials." />
+
+  <!-- Google Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader"
+    style="position: fixed; inset: 0; background: #050816; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <div
+      style="width: 60px; height: 60px; border: 4px solid rgba(145, 94, 255, 0.2); border-top-color: #915eff; border-radius: 50%; animation: spin 1s infinite linear;">
+    </div>
+    <p style="margin-top: 1.5rem; font-weight: 700; letter-spacing: 0.15em; color: #dfd9ff; font-family: sans-serif;">
+      LOADING 3D PORTFOLIO...</p>
+    <style>
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </div>
+
+  <!-- Starfield Canvas -->
+  <canvas id="stars-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <nav id="navbar" class="navbar paddingX">
+    <div class="nav-container max-w-7xl">
+      <a href="#hero" class="nav-logo" aria-label="Gunasri A Home">
+        <div class="logo-box">GA</div>
+        <div class="logo-text">GUNASRI A <span>| CSE</span></div>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="nav-links desktop-menu">
+        <li><a href="#hero" class="nav-link active">HOME</a></li>
+        <li><a href="#about" class="nav-link">ABOUT</a></li>
+        <li><a href="#skills" class="nav-link">SKILLS</a></li>
+        <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
+        <li><a href="#projects" class="nav-link">PROJECTS</a></li>
+        <li><a href="#certifications" class="nav-link">CERTIFICATIONS</a></li>
+        <li><a href="#education" class="nav-link">EDUCATION</a></li>
+        <li><a href="#contact" class="nav-link">CONTACT</a></li>
+        <li class="nav-socials-wrapper">
+          <a href="https://github.com/gunasrikumar159-cloud" target="_blank" rel="noopener noreferrer"
+            class="nav-icon-link" aria-label="GitHub Profile" title="GitHub Profile">
+            <i data-lucide="github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/gunasri-kumar" target="_blank" rel="noopener noreferrer"
+            class="nav-icon-link" aria-label="LinkedIn Profile" title="LinkedIn Profile">
+            <i data-lucide="linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <button class="btn-resume btn-resume-download" type="button" aria-label="Download Resume PDF">
+            <i data-lucide="download" style="width: 16px; height: 16px;"></i> RESUME
+          </button>
+        </li>
+      </ul>
+
+      <!-- Mobile Toggle Button -->
+      <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i data-lucide="menu" style="width: 28px; height: 28px;"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="mobile-menu-overlay">
+      <div class="mobile-menu-header">
+        <div class="logo-text">GUNASRI A <span>| CSE</span></div>
+        <button id="mobile-close" class="mobile-close-btn" aria-label="Close menu">
+          <i data-lucide="x" style="width: 24px; height: 24px;"></i>
+        </button>
+      </div>
+      <ul>
+        <li><a href="#hero" class="nav-link">HOME</a></li>
+        <li><a href="#about" class="nav-link">ABOUT</a></li>
+        <li><a href="#skills" class="nav-link">SKILLS</a></li>
+        <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
+        <li><a href="#projects" class="nav-link">PROJECTS</a></li>
+        <li><a href="#certifications" class="nav-link">CERTIFICATIONS</a></li>
+        <li><a href="#education" class="nav-link">EDUCATION</a></li>
+        <li><a href="#contact" class="nav-link">CONTACT</a></li>
+        <li class="mobile-social-row">
+          <a href="https://github.com/gunasrikumar159-cloud" target="_blank" rel="noopener noreferrer"
+            class="mobile-social-link">
+            <i data-lucide="github" style="width: 18px; height: 18px;"></i> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/gunasri-kumar" target="_blank" rel="noopener noreferrer"
+            class="mobile-social-link">
+            <i data-lucide="linkedin" style="width: 18px; height: 18px;"></i> LinkedIn
+          </a>
+        </li>
+        <li style="margin-top: 0.5rem;">
+          <button class="btn-resume btn-resume-download" style="width: 100%; justify-content: center;">
+            <i data-lucide="download" style="width: 16px; height: 16px;"></i> DOWNLOAD RESUME
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero-section">
+    <div class="paddingX max-w-7xl hero-content">
+      <div class="indicator-line">
+        <div class="dot-purple"></div>
+        <div class="line-purple violet-gradient"></div>
+      </div>
+      <div>
+        <h1 class="heroHeadText">Hi, I'm <span style="color: var(--accent-violet);">GUNASRI A</span></h1>
+        <p class="heroSubText">
+          Computer Science Engineering Student<br />
+          <span style="color: var(--accent-blue); font-weight: 600;">Aspiring Software & Full Stack Developer</span>
+        </p>
+        <p class="hero-tagline">
+          "Building responsive web applications and practical software solutions with modern technologies."
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn-resume">
+            <i data-lucide="briefcase" style="width: 18px; height: 18px;"></i> VIEW MY WORK
+          </a>
+          <button class="btn-secondary btn-resume-download" type="button" style="cursor: pointer;">
+            <i data-lucide="download" style="width: 18px; height: 18px;"></i> DOWNLOAD RESUME
+          </button>
+          <a href="https://github.com/gunasrikumar159-cloud" target="_blank" rel="noopener noreferrer"
+            class="btn-secondary">
+            <i data-lucide="github" style="width: 18px; height: 18px;"></i> GITHUB
+          </a>
+          <a href="https://www.linkedin.com/in/gunasri-kumar" target="_blank" rel="noopener noreferrer"
+            class="btn-secondary">
+            <i data-lucide="linkedin" style="width: 18px; height: 18px;"></i> LINKEDIN
+          </a>
+          <a href="#contact" class="btn-secondary">
+            <i data-lucide="mail" style="width: 18px; height: 18px;"></i> CONTACT ME
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D Interactive Hero Canvas -->
+    <div class="canvas-hero-wrapper" id="hero-canvas-container"></div>
+
+    <!-- Scroll Down Prompt -->
+    <div class="scroll-prompt">
+      <a href="#about" aria-label="Scroll down to About section">
+        <div class="scroll-pill">
+          <div class="scroll-dot"></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- KEY METRICS / HIGHLIGHTS BAR -->
+  <section class="metrics-section paddingX max-w-7xl">
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon-box"><i data-lucide="award"></i></div>
+        <div class="metric-content">
+          <span class="metric-number">8.47</span>
+          <span class="metric-label">B.E. CSE CGPA</span>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-box"><i data-lucide="folder-code"></i></div>
+        <div class="metric-content">
+          <span class="metric-number">04</span>
+          <span class="metric-label">Key Projects</span>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-box"><i data-lucide="briefcase"></i></div>
+        <div class="metric-content">
+          <span class="metric-number">01</span>
+          <span class="metric-label">Industry Internship</span>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-box"><i data-lucide="shield-check"></i></div>
+        <div class="metric-content">
+          <span class="metric-number">08</span>
+          <span class="metric-label">Certifications</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="section-container padding max-w-7xl">
+    <div>
+      <p class="sectionSubText">INTRODUCTION</p>
+      <h2 class="sectionHeadText">ABOUT ME.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="tilt-card">
+        <h3
+          style="font-size: 1.5rem; font-weight: 800; color: var(--text-white); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem;">
+          <i data-lucide="user-check" style="color: var(--accent-violet);"></i> Computer Science Engineering Student
+        </h3>
+        <p style="color: var(--text-sub); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.2rem;">
+          I am a Computer Science Engineering student at IFET College of Engineering with a strong foundation in
+          programming, software development, and web technologies. Passionate about engineering responsive web
+          applications, working with relational databases, and solving practical problems.
+        </p>
+        <p style="color: var(--text-sub); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.2rem;">
+          I have hands-on experience through academic projects—including computer vision posture monitoring, machine
+          learning phishing detection, and an ongoing Explainable AI digital twin framework—as well as industry
+          internship training at Aaha Solution building an employee attendance management system.
+        </p>
+        <p style="color: var(--text-sub); font-size: 1.05rem; line-height: 1.8;">
+          A quick learner with strong communication, problem-solving, and teamwork abilities, eager to contribute
+          effectively as a Software Developer or Full Stack Developer.
+        </p>
+      </div>
+
+      <!-- Information Panel -->
+      <div class="info-panel">
+        <h3
+          style="font-size: 1.25rem; font-weight: 800; color: var(--text-white); margin-bottom: 1.5rem; border-bottom: 1px solid rgba(145,94,255,0.2); padding-bottom: 0.75rem;">
+          Academic & Career Overview
+        </h3>
+
+        <div class="info-item">
+          <div class="info-icon"><i data-lucide="graduation-cap"></i></div>
+          <div class="info-text">
+            <label>Education</label>
+            <p>B.E. Computer Science & Engineering</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i data-lucide="building-2"></i></div>
+          <div class="info-text">
+            <label>College</label>
+            <p>IFET College of Engineering</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i data-lucide="calendar"></i></div>
+          <div class="info-text">
+            <label>Duration</label>
+            <p>2023 – 2027</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i data-lucide="award"></i></div>
+          <div class="info-text">
+            <label>CGPA</label>
+            <p style="color: #00cea8;">8.47</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon"><i data-lucide="target"></i></div>
+          <div class="info-text">
+            <label>Career Goal</label>
+            <p style="color: var(--accent-violet-light);">Software / Full Stack Developer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL SKILLS SECTION -->
+  <section id="skills" class="section-container padding max-w-7xl">
+    <div>
+      <p class="sectionSubText">WHAT I BRING TO THE TABLE</p>
+      <h2 class="sectionHeadText">TECHNICAL SKILLS.</h2>
+    </div>
+
+    <!-- Interactive 3D Floating Skill Balls -->
+    <div class="skills-canvas-container">
+      <div class="skill-ball-wrapper" title="Python">
+        <i data-lucide="code-2" style="width: 32px; height: 32px; color: #ffc107;"></i>
+        <span class="skill-ball-label">Python</span>
+      </div>
+      <div class="skill-ball-wrapper" title="Java">
+        <i data-lucide="coffee" style="width: 32px; height: 32px; color: #f44336;"></i>
+        <span class="skill-ball-label">Java</span>
+      </div>
+      <div class="skill-ball-wrapper" title="HTML5">
+        <i data-lucide="file-code" style="width: 32px; height: 32px; color: #e44d26;"></i>
+        <span class="skill-ball-label">HTML5</span>
+      </div>
+      <div class="skill-ball-wrapper" title="CSS3">
+        <i data-lucide="palette" style="width: 32px; height: 32px; color: #264de4;"></i>
+        <span class="skill-ball-label">CSS3</span>
+      </div>
+      <div class="skill-ball-wrapper" title="JavaScript">
+        <i data-lucide="terminal" style="width: 32px; height: 32px; color: #f7df1e;"></i>
+        <span class="skill-ball-label">JavaScript</span>
+      </div>
+      <div class="skill-ball-wrapper" title="React.js">
+        <i data-lucide="atom" style="width: 32px; height: 32px; color: #61dafb;"></i>
+        <span class="skill-ball-label">React.js</span>
+      </div>
+      <div class="skill-ball-wrapper" title="Node.js">
+        <i data-lucide="server" style="width: 32px; height: 32px; color: #68a063;"></i>
+        <span class="skill-ball-label">Node.js</span>
+      </div>
+      <div class="skill-ball-wrapper" title="MySQL">
+        <i data-lucide="database" style="width: 32px; height: 32px; color: #00758f;"></i>
+        <span class="skill-ball-label">MySQL</span>
+      </div>
+      <div class="skill-ball-wrapper" title="MongoDB">
+        <i data-lucide="hard-drive" style="width: 32px; height: 32px; color: #47a248;"></i>
+        <span class="skill-ball-label">MongoDB</span>
+      </div>
+      <div class="skill-ball-wrapper" title="Git">
+        <i data-lucide="git-branch" style="width: 32px; height: 32px; color: #f05032;"></i>
+        <span class="skill-ball-label">Git</span>
+      </div>
+      <div class="skill-ball-wrapper" title="Oracle Cloud Infrastructure">
+        <i data-lucide="cloud" style="width: 32px; height: 32px; color: #f80000;"></i>
+        <span class="skill-ball-label">OCI</span>
+      </div>
+    </div>
+
+    <!-- Structured Skill Categories Cards -->
+    <div class="skills-categories">
+      <div class="tilt-card">
+        <h3
+          style="font-size: 1.2rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i data-lucide="code" style="color: var(--accent-violet);"></i> Programming Languages
+        </h3>
+        <div class="skill-chip-group">
+          <span class="skill-chip"><i data-lucide="check-circle"
+              style="width: 14px; height: 14px; color: var(--accent-violet-light);"></i> Python</span>
+          <span class="skill-chip"><i data-lucide="check-circle"
+              style="width: 14px; height: 14px; color: var(--accent-violet-light);"></i> Java</span>
+        </div>
+      </div>
+
+      <div class="tilt-card">
+        <h3
+          style="font-size: 1.2rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i data-lucide="globe" style="color: var(--accent-blue);"></i> Web Technologies
+        </h3>
+        <div class="skill-chip-group">
+          <span class="skill-chip">HTML5</span>
+          <span class="skill-chip">CSS3</span>
+          <span class="skill-chip">JavaScript</span>
+          <span class="skill-chip">React.js</span>
+          <span class="skill-chip">Node.js</span>
+          <span class="skill-chip">Express.js</span>
+        </div>
+      </div>
+
+      <div class="tilt-card">
+        <h3
+          style="font-size: 1.2rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i data-lucide="database" style="color: #00cea8;"></i> Databases
+        </h3>
+        <div class="skill-chip-group">
+          <span class="skill-chip">MySQL</span>
+          <span class="skill-chip">MongoDB</span>
+        </div>
+      </div>
+
+      <div class="tilt-card">
+        <h3
+          style="font-size: 1.2rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i data-lucide="cpu" style="color: #f272c6;"></i> Core Concepts
+        </h3>
+        <div class="skill-chip-group">
+          <span class="skill-chip">Object-Oriented Programming (OOP)</span>
+          <span class="skill-chip">Data Structures & Algorithms (DSA)</span>
+          <span class="skill-chip">DBMS</span>
+          <span class="skill-chip">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="tilt-card">
+        <h3
+          style="font-size: 1.2rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i data-lucide="wrench" style="color: #ffc107;"></i> Tools & Platforms
+        </h3>
+        <div class="skill-chip-group">
+          <span class="skill-chip">Git</span>
+          <span class="skill-chip">GitHub</span>
+          <span class="skill-chip">VS Code</span>
+          <span class="skill-chip">Oracle Cloud Infrastructure</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERNSHIP / EXPERIENCE SECTION -->
+  <section id="experience" class="section-container padding max-w-7xl">
+    <div>
+      <p class="sectionSubText">WHAT I HAVE DONE SO FAR</p>
+      <h2 class="sectionHeadText">WORK EXPERIENCE.</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item left">
+        <div class="timeline-dot"><i data-lucide="briefcase"
+            style="width: 14px; height: 14px; color: var(--accent-violet-light);"></i></div>
+        <div class="timeline-content">
+          <div class="timeline-date">INTERNSHIP EXPERIENCE</div>
+          <h3 class="timeline-title">Intern</h3>
+          <h4 class="timeline-subtitle">Aaha Solution</h4>
+          <p
+            style="color: var(--accent-violet-light); font-weight: 600; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i data-lucide="folder-check" style="width: 16px; height: 16px;"></i> Project: Time and Attendance
+            Management System
+          </p>
+          <ul class="timeline-points">
+            <li>Developed a web-based Time and Attendance Management System.</li>
+            <li>Designed responsive user interfaces using HTML, CSS, and JavaScript.</li>
+            <li>Worked with MySQL for storing and managing employee attendance records.</li>
+            <li>Collaborated with the team to test, debug, and improve application performance.</li>
+          </ul>
+          <div class="project-tags" style="margin-top: 1rem;">
+            <span class="tag-badge tag-blue">HTML5</span>
+            <span class="tag-badge tag-blue">CSS3</span>
+            <span class="tag-badge tag-pink">JavaScript</span>
+            <span class="tag-badge tag-violet">MySQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="section-container padding max-w-7xl">
+    <div>
+      <p class="sectionSubText">MY WORK</p>
+      <h2 class="sectionHeadText">PROJECTS.</h2>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Project 01: Academic Project -->
+      <div class="project-card">
+        <div class="project-img-container">
+          <span class="project-badge">ACADEMIC PROJECT</span>
+          <div style="text-align: center; padding: 1.5rem;">
+            <i data-lucide="activity" style="width: 60px; height: 60px; color: var(--accent-violet);"></i>
+            <h4 style="margin-top: 0.5rem; font-weight: 700; color: var(--text-white); font-size: 1.1rem;">
+              Posture Monitoring System
+            </h4>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title" style="font-size: 1.25rem;">
+            Wrong Posture Muscular Strain Detection
+          </h3>
+          <p class="project-desc">
+            "Developed a posture monitoring system to detect incorrect body posture and reduce the risk of muscular
+            strain."
+          </p>
+          <ul class="project-bullets">
+            <li>Implemented posture detection using computer vision techniques.</li>
+            <li>Designed the system to provide real-time posture monitoring and alerts.</li>
+            <li>Improved awareness of ergonomic posture through continuous monitoring.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tag-badge tag-violet">Computer Vision</span>
+            <span class="tag-badge tag-blue">Python</span>
+            <span class="tag-badge tag-green">Ergonomic Monitoring</span>
+            <span class="tag-badge tag-pink">Real-time Alerts</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/gunasrikumar159-cloud" target="_blank" rel="noopener noreferrer"
+              class="project-link-btn">
+              <i data-lucide="github" style="width: 16px; height: 16px;"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 02: Aaha Solution Internship Project -->
+      <div class="project-card">
+        <div class="project-img-container">
+          <span class="project-badge" style="border-color: #00cea8; color: #00cea8;">INTERNSHIP PROJECT</span>
+          <div style="text-align: center; padding: 1.5rem;">
+            <i data-lucide="calendar-check-2" style="width: 60px; height: 60px; color: #00cea8;"></i>
+            <h4 style="margin-top: 0.5rem; font-weight: 700; color: var(--text-white); font-size: 1.1rem;">
+              Attendance Management System
+            </h4>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title" style="font-size: 1.25rem;">
+            Time and Attendance Management System
+          </h3>
+          <p class="project-desc">
+            "Developed a web-based Time and Attendance Management System during internship at Aaha Solution."
+          </p>
+          <ul class="project-bullets">
+            <li>Designed responsive user interfaces using HTML, CSS, and JavaScript.</li>
+            <li>Worked with MySQL for storing and managing employee attendance records.</li>
+            <li>Collaborated with team members to test, debug, and improve application performance.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tag-badge tag-blue">HTML5</span>
+            <span class="tag-badge tag-pink">CSS3</span>
+            <span class="tag-badge tag-green">JavaScript</span>
+            <span class="tag-badge tag-violet">MySQL</span>
+            <span class="tag-badge tag-blue">Web Development</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/gunasrikumar159-cloud" target="_blank" rel="noopener noreferrer"
+              class="project-link-btn">
+              <i data-lucide="github" style="width: 16px; height: 16px;"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 03: Academic Project (2025–2026) -->
+      <div class="project-card">
+        <div class="project-img-container">
+          <span class="project-badge">ACADEMIC PROJECT (2025–2026)</span>
+          <div style="text-align: center; padding: 1.5rem;">
+            <i data-lucide="shield-alert" style="width: 60px; height: 60px; color: #f272c6;"></i>
+            <h4 style="margin-top: 0.5rem; font-weight: 700; color: var(--text-white); font-size: 1.1rem;">
+              Phishing Detection System
+            </h4>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title" style="font-size: 1.25rem;">
+            Phishing Website Detection by Machine Learning Techniques
+          </h3>
+          <p class="project-desc">
+            "Academic project applying machine learning algorithms to detect and classify phishing websites from
+            legitimate URLs based on web characteristics."
+          </p>
+          <ul class="project-bullets">
+            <li>Implemented machine learning classification algorithms to detect phishing websites.</li>
+            <li>Extracted and analyzed URL-based, content-based, and domain security features.</li>
+            <li>Evaluated classification models to distinguish legitimate websites from malicious links.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tag-badge tag-pink">Machine Learning</span>
+            <span class="tag-badge tag-blue">Cybersecurity</span>
+            <span class="tag-badge tag-green">Python</span>
+            <span class="tag-badge tag-violet">Phishing Detection</span>
+            <span class="tag-badge tag-blue">Feature Extraction</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/gunasrikumar159-cloud" target="_blank" rel="noopener noreferrer"
+              class="project-link-btn">
+              <i data-lucide="github" style="width: 16px; height: 16px;"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 04: Ongoing Final Year Project -->
+      <div class="project-card">
+        <div class="project-img-container">
+          <span class="project-badge badge-ongoing">ONGOING FINAL YEAR PROJECT</span>
+          <div style="text-align: center; padding: 1.5rem;">
+            <i data-lucide="cpu" style="width: 60px; height: 60px; color: var(--accent-violet);"></i>
+            <h4 style="margin-top: 0.5rem; font-weight: 700; color: var(--text-white); font-size: 1.1rem;">
+              Ballast Water Biosecurity System
+            </h4>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title" style="font-size: 1.25rem;">
+            Explainable AI-Driven Digital Twin Framework for Intelligent Ballast Water Biosecurity Risk Assessment and
+            Decision Support
+          </h3>
+          <p class="project-desc">
+            "Ongoing final year project developing an Explainable AI-driven digital twin framework for ballast water
+            biosecurity risk assessment and decision support."
+          </p>
+          <ul class="project-bullets">
+            <li>Developing risk assessment modeling using machine learning and Explainable AI (XAI) concepts.</li>
+            <li>Modeling environmental and biological parameters to evaluate maritime ballast water risk levels.</li>
+            <li>Designing decision support functionality to provide interpretable risk evaluation for biosecurity
+              management.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="tag-badge tag-violet">Explainable AI (XAI)</span>
+            <span class="tag-badge tag-blue">Digital Twin</span>
+            <span class="tag-badge tag-green">Python</span>
+            <span class="tag-badge tag-pink">Machine Learning</span>
+            <span class="tag-badge tag-violet">Risk Assessment</span>
+            <span class="tag-badge tag-blue">Decision Support</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/gunasrikumar159-cloud" target="_blank" rel="noopener noreferrer"
+              class="project-link-btn">
+              <i data-lucide="github" style="width: 16px; height: 16px;"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS SECTION -->
+  <section id="certifications" class="section-container padding max-w-7xl">
+    <div>
+      <p class="sectionSubText">ACADEMIC & PROFESSIONAL CREDENTIALS</p>
+      <h2 class="sectionHeadText">CERTIFICATIONS.</h2>
+    </div>
+
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon"><i data-lucide="network"></i></div>
+        <h3 class="cert-title">CCNA – Introduction to Networks</h3>
+        <p class="cert-issuer">Cisco Networking Academy</p>
+        <span class="cert-date">June 2025</span>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon"><i data-lucide="bar-chart-3"></i></div>
+        <h3 class="cert-title">Basics Of Data Science</h3>
+        <p class="cert-issuer">Certification Course</p>
+        <span class="cert-date">July 2025</span>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon"><i data-lucide="code"></i></div>
+        <h3 class="cert-title">Basics Of Python</h3>
+        <p class="cert-issuer">Certification Course</p>
+        <span class="cert-date">July 2025</span>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon"><i data-lucide="bot"></i></div>
+        <h3 class="cert-title">Introduction to Artificial Intelligence</h3>
+        <p class="cert-issuer">Certification Course</p>
+        <span class="cert-date">January 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon"><i data-lucide="cpu"></i></div>
+        <h3 class="cert-title">Getting Started with Artificial Intelligence</h3>
+        <p class="cert-issuer">Certification Course</p>
+        <span class="cert-date">February 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon"><i data-lucide="rocket"></i></div>
+        <h3 class="cert-title">Ignite Bootcamp – Venture Idea Development</h3>
+        <p class="cert-issuer">Bootcamp Certificate</p>
+        <span class="cert-date">March 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon"><i data-lucide="user"></i></div>
+        <h3 class="cert-title">Body Language Skills</h3>
+        <p class="cert-issuer">Skill Certificate</p>
+        <span class="cert-date">March 2026</span>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon"><i data-lucide="file-text"></i></div>
+        <h3 class="cert-title">Business Writing Skills</h3>
+        <p class="cert-issuer">Skill Certificate</p>
+        <span class="cert-date">April 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS SECTION -->
+  <section id="achievements" class="section-container padding max-w-7xl">
+    <div>
+      <p class="sectionSubText">RECOGNITION & PARTICIPATION</p>
+      <h2 class="sectionHeadText">ACHIEVEMENTS.</h2>
+    </div>
+
+    <div class="achieve-container">
+      <div class="achieve-card">
+        <i data-lucide="trophy"
+          style="width: 54px; height: 54px; color: var(--accent-violet); margin-bottom: 1rem;"></i>
+        <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-white); margin-bottom: 0.75rem;">
+          Academic & Technical Engagement
+        </h3>
+        <p style="color: var(--text-sub); max-width: 700px; margin: 0 auto; font-size: 1.1rem; line-height: 1.7;">
+          "Actively participated in technical events, paper presentations and hackathons."
+        </p>
+
+        <div class="achieve-badges">
+          <div class="achieve-pill">
+            <i data-lucide="terminal" style="color: var(--accent-violet-light);"></i> TECHNICAL EVENTS
+          </div>
+          <div class="achieve-pill">
+            <i data-lucide="file-spread-sheet" style="color: var(--accent-blue);"></i> PAPER PRESENTATIONS
+          </div>
+          <div class="achieve-pill">
+            <i data-lucide="laptop" style="color: #00cea8;"></i> HACKATHONS
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section id="education" class="section-container padding max-w-7xl">
+    <div>
+      <p class="sectionSubText">ACADEMIC BACKGROUND</p>
+      <h2 class="sectionHeadText">EDUCATION.</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item left">
+        <div class="timeline-dot"><i data-lucide="graduation-cap"
+            style="width: 14px; height: 14px; color: var(--accent-violet-light);"></i></div>
+        <div class="timeline-content">
+          <div class="timeline-date">2023 – 2027</div>
+          <h3 class="timeline-title">Bachelor of Engineering — Computer Science and Engineering</h3>
+          <h4 class="timeline-subtitle">IFET College of Engineering</h4>
+          <p style="font-size: 1.05rem; font-weight: 700; color: #00cea8;">
+            CGPA: 8.47
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="timeline-dot"><i data-lucide="book-open"
+            style="width: 14px; height: 14px; color: var(--accent-blue);"></i></div>
+        <div class="timeline-content">
+          <div class="timeline-date">2021 – 2023</div>
+          <h3 class="timeline-title">Higher Secondary Certificate (HSC)</h3>
+          <p style="font-size: 1.05rem; font-weight: 700; color: var(--accent-violet-light); margin-top: 0.5rem;">
+            Percentage: 78.5%
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="timeline-dot"><i data-lucide="check-circle" style="width: 14px; height: 14px; color: #00cea8;"></i>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-date">SECONDARY SCHOOL</div>
+          <h3 class="timeline-title">Secondary School Leaving Certificate (SSLC)</h3>
+          <p style="font-size: 1.05rem; font-weight: 700; color: #00cea8; margin-top: 0.5rem;">
+            Percentage: 98.2%
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOFT SKILLS & LANGUAGES SECTION -->
+  <section class="section-container padding max-w-7xl">
+    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+      <!-- Soft Skills -->
+      <div>
+        <p class="sectionSubText">INTERPERSONAL STRENGTHS</p>
+        <h2 class="sectionHeadText" style="font-size: 2.25rem;">SOFT SKILLS.</h2>
+        <div class="skill-chip-group" style="margin-top: 1.5rem;">
+          <span class="skill-chip" style="padding: 0.6rem 1.1rem; font-size: 0.95rem;">Communication</span>
+          <span class="skill-chip" style="padding: 0.6rem 1.1rem; font-size: 0.95rem;">Problem Solving</span>
+          <span class="skill-chip" style="padding: 0.6rem 1.1rem; font-size: 0.95rem;">Team Collaboration</span>
+          <span class="skill-chip" style="padding: 0.6rem 1.1rem; font-size: 0.95rem;">Critical Thinking</span>
+          <span class="skill-chip" style="padding: 0.6rem 1.1rem; font-size: 0.95rem;">Decision Making</span>
+          <span class="skill-chip" style="padding: 0.6rem 1.1rem; font-size: 0.95rem;">Adaptability</span>
+          <span class="skill-chip" style="padding: 0.6rem 1.1rem; font-size: 0.95rem;">Time Management</span>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div style="margin-top: 1rem;">
+        <p class="sectionSubText">COMMUNICATION</p>
+        <h2 class="sectionHeadText" style="font-size: 2.25rem;">LANGUAGES.</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem;">
+          <div class="tilt-card" style="padding: 1.25rem 2rem; display: flex; align-items: center; gap: 1rem;">
+            <i data-lucide="globe-2" style="color: var(--accent-violet); width: 28px; height: 28px;"></i>
+            <div>
+              <h4 style="font-weight: 800; color: var(--text-white);">English</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">Professional Proficiency</p>
+            </div>
+          </div>
+
+          <div class="tilt-card" style="padding: 1.25rem 2rem; display: flex; align-items: center; gap: 1rem;">
+            <i data-lucide="message-square" style="color: #00cea8; width: 28px; height: 28px;"></i>
+            <div>
+              <h4 style="font-weight: 800; color: var(--text-white);">Tamil</h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">Native</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section-container padding max-w-7xl">
+    <div>
+      <p class="sectionSubText">GET IN TOUCH</p>
+      <h2 class="sectionHeadText">LET'S CONNECT.</h2>
+      <p style="color: var(--text-secondary); margin-top: 0.5rem; font-size: 1.05rem;">
+        "I am open to opportunities where I can learn, contribute, and grow as a software developer."
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <div class="contact-card">
+        <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-white); margin-bottom: 1.5rem;">
+          Send Me a Message
+        </h3>
+
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" class="form-input" placeholder="What's your name?" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" class="form-input" placeholder="What's your email address?" required />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" class="form-input" placeholder="What would you like to say?" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-resume"
+            style="width: 100%; justify-content: center; padding: 0.9rem; font-size: 1rem; border: none; cursor: pointer;">
+            <i data-lucide="send" style="width: 18px; height: 18px;"></i> Send Message
+          </button>
+        </form>
+
+        <div id="form-status"></div>
+
+        <div class="contact-info-list">
+          <a href="mailto:gunasrikumar159@gmail.com" class="contact-link-item">
+            <i data-lucide="mail" style="color: var(--accent-violet-light);"></i>
+            <div>
+              <span class="contact-link-label">Email</span>
+              <p>gunasrikumar159@gmail.com</p>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/gunasri-kumar" target="_blank" rel="noopener noreferrer"
+            class="contact-link-item">
+            <i data-lucide="linkedin" style="color: var(--accent-blue);"></i>
+            <div>
+              <span class="contact-link-label">LinkedIn</span>
+              <p>linkedin.com/in/gunasri-kumar</p>
+            </div>
+          </a>
+
+          <a href="https://github.com/gunasrikumar159-cloud" target="_blank" rel="noopener noreferrer"
+            class="contact-link-item">
+            <i data-lucide="github" style="color: #f44336;"></i>
+            <div>
+              <span class="contact-link-label">GitHub</span>
+              <p>github.com/gunasrikumar159-cloud</p>
+            </div>
+          </a>
+
+          <a href="tel:+919976252027" class="contact-link-item">
+            <i data-lucide="phone" style="color: #00cea8;"></i>
+            <div>
+              <span class="contact-link-label">Phone</span>
+              <p>+91 9976252027</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3D Earth / Globe Canvas -->
+      <div class="contact-card"
+        style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h4
+          style="font-size: 1.1rem; font-weight: 700; color: var(--text-sub); margin-bottom: 1rem; text-align: center;">
+          Global Developer Connectivity
+        </h4>
+        <div id="earth-canvas" class="earth-canvas-container"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="max-w-7xl footer-container">
+      <div class="logo-box" style="width: 40px; height: 40px; font-size: 1.1rem;">GA</div>
+      <p style="font-weight: 500;">© 2026 Gunasri A. All rights reserved.</p>
+      <div class="footer-social-links">
+        <a href="https://github.com/gunasrikumar159-cloud" target="_blank" rel="noopener noreferrer"
+          class="footer-icon-link" aria-label="GitHub Profile">
+          <i data-lucide="github" style="width: 20px; height: 20px;"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/gunasri-kumar" target="_blank" rel="noopener noreferrer"
+          class="footer-icon-link" aria-label="LinkedIn Profile">
+          <i data-lucide="linkedin" style="width: 20px; height: 20px;"></i>
+        </a>
+        <a href="mailto:gunasrikumar159@gmail.com" class="footer-icon-link" aria-label="Send Email">
+          <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+        </a>
+        <a href="tel:+919976252027" class="footer-icon-link" aria-label="Call Phone">
+          <i data-lucide="phone" style="width: 20px; height: 20px;"></i>
+        </a>
+        <button class="footer-icon-link btn-resume-download" type="button" aria-label="Download Resume"
+          style="background: transparent; border: none; cursor: pointer; color: inherit;">
+          <i data-lucide="download" style="width: 20px; height: 20px;"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lucide icons initialization & Main Script -->
+  <script>
+    lucide.createIcons();
+  </script>
+  <script src="js/three-scene.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
